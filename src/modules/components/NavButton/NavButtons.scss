@@ -1,0 +1,28 @@
+@import '../../../scss/variables/variables.scss';
+
+.next-page {
+  cursor: pointer;
+  background-color: $button-primary;
+  color: white;
+  display: inline-block;
+  padding: 5px 1rem;
+  font-size: 22px;
+  position: absolute;
+  bottom: 2rem;
+  right: 1rem;
+}
+.prev-page {
+  cursor: pointer;
+  background-color: $button-danger;
+  color: white;
+  display: inline-block;
+  padding: 5px 1rem;
+  font-size: 22px;
+  position: absolute;
+  bottom: 2rem;
+  left: 1rem;
+}
+.disabled {
+  background-color: $disabled;
+  cursor: not-allowed;
+}

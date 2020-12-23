@@ -1,0 +1,22 @@
+@import '../../../scss/variables/variables.scss';
+
+.registerSmall {
+  text-align: center;
+  width: 10rem;
+  cursor: pointer;
+  margin: 0 10px;
+  .icon {
+    i {
+      transition: 0.3s;
+      font-size: 4rem;
+      color: $default-color;
+      padding-bottom: 0.5rem;
+      &:hover {
+        color: black;
+      }
+    }
+  }
+  .text {
+
+  }
+}

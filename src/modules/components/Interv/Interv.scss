@@ -1,0 +1,30 @@
+@import '../../../scss/variables/variables.scss';
+
+.interviewer-square {
+  text-align: center;
+  width: 10rem;
+  margin: 0 10px;
+  .icon {
+    i {
+      font-size: 4rem;
+      color: $default-color;
+      padding-bottom: 0.5rem;
+    }
+  }
+  .name {
+    p {
+      margin: 0;
+    }
+  }
+  .employeeId {
+    p {
+      margin: 0;
+    }
+  }
+  .userEid {
+    p {
+      margin: 0;
+    }
+  }
+
+}

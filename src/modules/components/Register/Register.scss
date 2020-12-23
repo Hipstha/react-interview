@@ -1,0 +1,66 @@
+@import '../../../scss/variables/variables.scss';
+
+.register {
+  padding-top: 5rem;
+  .register-container {
+    text-align: center;
+    .register-title {
+      h2 {
+
+      }
+    }
+    .add-type {
+      display: inline-block;
+      cursor: pointer;
+      .icon {
+        color: $default-color;
+        font-size: 3rem;
+        transition: 0.3s;
+        i {
+          padding: 1rem 0rem;
+        }
+      }
+      .sub-title {
+        p {
+
+        }
+      }
+      &:hover {
+        .icon {
+          color: black;
+        }
+      }
+    }
+  }
+  
+}
+
+.modal-interviewer {
+  .modal-dialog {
+    .modal-content {
+      .modal-header {
+        border-bottom: unset;
+        .modal-title {
+          i {
+            color: $default-color;
+          }
+        }
+      }
+
+      .modal-body {
+        .form-group {
+          .form-input {
+            border-left: 0;
+            border-top: 0;
+            border-right: 0;
+          }
+        }
+      }
+
+      .modal-footer {
+        border-top: unset;
+      }
+    }
+  }
+
+}

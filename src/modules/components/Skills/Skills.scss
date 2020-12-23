@@ -1,0 +1,89 @@
+@import '../../../scss/variables/variables.scss';
+
+.skills {
+  width: 50%;
+  padding: 0rem 1rem;
+  .skills-container {
+    border: 1px solid $default-color;
+    padding: 1rem 2rem 2rem;
+    .title {
+      h2 {
+
+      }
+    }
+    .select-skills {
+      text-align: center;
+      .select-skills-container {
+        cursor: pointer;
+        display: inline-block;
+        .head-select {
+          p {
+            margin: 0;
+            margin-bottom: 1rem;
+          }
+        }
+        .icon {
+          i {
+            font-size: 4rem;
+            color: $default-color;
+            margin-bottom: 1rem;
+            transition: 0.3s;
+            &:hover {
+              color: black;
+            }
+          }
+        }
+        .footer-select {
+          p {
+            margin: 0;
+          }
+        }
+      }
+    }
+    .skills-list {
+      height: 9.1rem;
+      cursor: pointer;
+      ul {
+        display: flex;
+        flex-wrap: wrap;
+        li {
+          font-size: 2rem;
+          margin-right: 3rem;
+        }
+      }
+    }
+  }
+}
+
+.skill-modal {
+  .modal-dialog {
+    .modal-content {
+      .modal-header {
+        border-bottom: none;
+        .modal-title {
+          i {
+            color: $default-color;
+            font-size: 2rem;
+            margin-right: 1rem;
+          }
+        }
+      }
+      .modal-body {
+        .form-check-input {
+          width: 1.3rem;
+          height: 1.3rem;
+          margin-right: 1rem;
+          position: unset;
+          margin-top: none;
+          margin-left: none;
+        }
+        .form-check-label {
+          font-size: 1.3rem;
+        }
+      }
+      .modal-footer {
+        border-top: none;
+      }
+    }
+  }
+}

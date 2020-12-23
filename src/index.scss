@@ -1,0 +1,20 @@
+@import '../node_modules/@fortawesome/fontawesome-free/css/all.min.css';
+@import "../node_modules//animate.css/animate.min.css";
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
+
+@import './scss/variables/variables.scss';
+
+body {
+  margin: 0;
+  font-family: $lato;
+  font-style: normal;
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: $lato;
+  }
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}

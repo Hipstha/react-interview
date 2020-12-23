@@ -1,0 +1,9 @@
+@import '../../../scss/variables/variables.scss';
+
+header {
+  .header-space {
+    color: white;
+    background-color: $default-color;
+    height: 3rem;
+  }
+}
