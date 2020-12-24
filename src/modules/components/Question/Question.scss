@@ -1,0 +1,72 @@
+@import '../../../scss/variables/variables.scss';
+
+.question-content {
+  text-align: center;
+  margin: auto;
+  width: 60%;
+  .question-topic {
+    h3 {
+      color: $disabled;
+    }
+  }
+  .question {
+    .question-text {
+      p {
+        font-size: 1.6rem;
+      }
+    }
+    .answers {
+      .form-group {
+        display: flex;
+        justify-content: space-around;
+        .form-check {
+          input[type='radio']:before {
+            content:'';
+            display:block;
+            width:60%;
+            height:60%;
+            margin: 20% auto;    
+            border-radius:50%;    
+          }
+          input[type='radio']:checked:before {
+            background: $default-color;
+            border: $default-color;
+          }
+          .form-check-input {
+            width: 1.4rem;
+            height: 1.4rem;
+          }
+          .form-check-label {
+            margin-left: 1rem;
+            font-size: 1.4rem;
+          }
+        }
+      }
+    }
+    .comments {
+      .comment-label {
+        p {
+          font-size: 1.2rem;
+        }
+      }
+      .comment {
+        .form-group {
+          textarea {
+            border: 1px solid $default-color;
+          }
+        }
+      }
+    }
+    .counter {
+      margin-bottom: 5rem;
+      font-size: 1.6rem;
+
+      p {
+        .at-moment {
+          font-weight: bold;
+          color: $default-color;
+        }
+      }
+    }
+  }
+}

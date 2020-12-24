@@ -1,0 +1,22 @@
+@import '../../../scss/variables/variables.scss';
+
+.questions {
+  .questions-content {
+    .carousel {
+      .carousel-indicators {
+        display: none;
+      }
+      .carousel-control-prev, .carousel-control-next {
+        i {
+          color: $default-color;
+          font-size: 5rem;
+        }
+      }
+      .carousel-control-next {
+        i {
+          color: $default-color;
+        }
+      }
+    }
+  }
+}

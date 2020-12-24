@@ -1,0 +1,144 @@
+@import '../../../scss/variables/variables.scss';
+
+.summary {
+  .summary-content {
+    .row {
+      .col {
+        .candidate-data {
+          .title {
+            h3 {
+
+            }
+          }
+          .candidate-name, .candidate-email, .candidate-type {
+            .label {
+              p {
+                color: $disabled;
+                font-weight: bold;
+                font-size: 1.2rem;
+                margin: 0;
+              }
+            }
+            .name, .email, .type {
+              p {
+                font-size: 1.2rem;
+                margin: 0;
+              }
+            }
+            
+          }
+        }
+
+        .skills {
+          .second {
+            text-align: center;
+          }
+          thead {
+            tr {
+              .results {
+                font-size: 1.2rem;
+              }
+              .see-results {
+                span {
+                  color: $default-color;
+                  cursor: pointer;
+                  &:hover {
+                    text-decoration: underline;
+                  }
+                }
+              }
+              .head, .score-title {
+                color: $disabled;
+                font-size: 1.2rem;
+              }
+            }
+          }
+          tbody {
+            tr {
+              td {
+                font-size: 1.1rem;
+              }
+            }
+          }
+        }
+
+      }
+    }
+
+    .comment-section {
+      margin-top: 2rem;
+      .comment-header {
+        h3 {
+
+        }
+      }
+      .comment {
+        textarea {
+          width: 100%;
+          border: 1px solid $default-color;
+        }
+      }
+    }
+
+    .summary-footer {
+      .finish-button {
+        position: absolute;
+        bottom: 2rem;
+        right: 1rem;
+        display: inline-block;
+        background-color: $button-primary;
+        padding: 0.2rem 1rem;
+        color: white;
+        cursor: pointer;
+        p {
+          font-size: 1.2rem;
+          margin: 0;
+        }
+      }
+    }
+
+  }
+
+}
+
+.modal-quest {
+  .modal-dialog {
+    max-width: 60%;
+    .modal-content {
+      .modal-header {
+        border-bottom: unset;
+        .modal-title{
+          i {
+            font-size: 2rem;
+            color: $default-color;
+          }
+        }
+      }
+      .modal-body {
+        .question-table {
+          width: 100%;
+          thead {
+            background-color: $default-color;
+            color: white;
+            tr {
+              th {
+                // border: 1px solid $default-color;
+                font-size: 1.1rem;
+                padding: 3px 10px;
+              }
+            }
+          }
+          tbody {
+            tr {
+              td {
+                border: 1px solid $disabled;
+                font-size: 1rem;
+                padding: 3px 10px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
