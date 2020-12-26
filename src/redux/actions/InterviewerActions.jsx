@@ -130,10 +130,10 @@ export function updateInterviewerActions(interviewer) {
         if(result.isConfirmed) {
           dispatch( updateInterviewer() );
           console.log(interviewer);
-          // axiosClient.put(
-          //   `/interviewer/${interviewer.id}`, 
-          //   interviewer
-          // );
+          axiosClient.put(
+            `/interviewer/${interviewer.id}`, 
+            interviewer
+          );
           dispatch( updateInterviewerSuccess(interviewer) );
           alerts.getSuccessAlert('Se ha modifcado con éxito');
         }
