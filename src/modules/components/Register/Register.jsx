@@ -4,6 +4,11 @@ import { Modal, Button, Form } from 'react-bootstrap';
 
 // classes
 import Props from '../../../Classes/Props';
+import Alerts from '../../../Classes/Alerts';
+
+// redux
+import { connect } from 'react-redux';
+import { addInterviewerAction } from '../../../redux/actions/InterviewerActions';
 
 // styles
 import './Register.scss';
@@ -11,11 +16,23 @@ import './Register.scss';
 class Register extends Component {
 
   thisProps = new Props();
-  state = {};
+  alerts = new Alerts();
+  type = '';
+
   constructor(props) {
     super(props);
-    this.state = { show: false };
+    this.state = {
+      show: false,
+      interviewer: {
+        name: '',
+        employeeId: '',
+        employeeEID: ''
+      }
+    };
+    this.submittedForm = this.submittedForm.bind(this);
+    this.handleChange = this.handleChange.bind(this);
     this.thisProps.setProps(props);
+    this.type = this.thisProps.getProps().type;
   }
 
   handleClose() {
@@ -30,15 +47,48 @@ class Register extends Component {
     });
   }
 
+  submittedForm(e) {
+    e.preventDefault();
+    if(this.type === 'entrevistador') {
+      const name = this.state.interviewer.name;
+      const employeeId = this.state.interviewer.employeeId;
+      const employeeEID = this.state.interviewer.employeeEID;
+      if (name === '' || employeeId === '' || employeeEID === '' ) {
+        this.alerts.getErrorAlert('Todos los campos son obligatorios');
+        return;
+      }
+      this.props.addInterviewerAction(
+        {
+          name,
+          employeeId,
+          employeeEID
+        }
+      );
+      this.handleClose();
+    }
+  }
+
+  handleChange(e) {
+    const target = e.target;
+    const name = target.name;
+    const value = target.value;
+    this.setState({
+      show: this.state.show,
+      interviewer: {
+        ...this.state.interviewer,
+        [name]: value
+      }
+    });
+  }
+
   render() {
-    const { type } = this.thisProps.getProps();
     return (
       <section className="register">
         <article className="register-container">
 
           <div className="register-title">
             <h2>
-              No se ha registrado ningún { type }
+              No se ha registrado ningún { this.type }
             </h2>
           </div>
 
@@ -58,7 +108,7 @@ class Register extends Component {
             <Modal.Title>
               <i className="fas fa-user-plus"></i>
               <strong>
-              { type === 'entrevistador' ? 
+              { this.type === 'entrevistador' ? 
                 <span> Nuevo entrevistador</span> : 
                 <span> Datos del candidato</span>
               }
@@ -66,26 +116,47 @@ class Register extends Component {
             </Modal.Title>
           </Modal.Header>
 
-          <Form>
+          <Form onSubmit={this.submittedForm}>
             <Modal.Body>
 
               {
-                type === 'entrevistador' ?
+                this.type === 'entrevistador' ?
                 (
                   <div>
-                    <Form.Group controlId="employeeName">
+                    <Form.Group>
                       <Form.Label><strong>Nombre completo</strong></Form.Label>
-                      <Form.Control className="form-input" type="text" placeholder="Ingrese el nombre" />
+                      <Form.Control id="employeeName"
+                                    name="name" 
+                                    className="form-input" 
+                                    type="text" 
+                                    placeholder="Ingrese el nombre"
+                                    onChange={this.handleChange}
+                                    value={this.state.interviewer.name}
+                      />
                     </Form.Group>
 
-                    <Form.Group controlId="employeeId">
+                    <Form.Group>
                       <Form.Label><strong>Id del empleado</strong></Form.Label>
-                      <Form.Control className="form-input" type="text" placeholder="Ingrese el id del empleado" />
+                      <Form.Control id="employeeId"
+                                    name="employeeId" 
+                                    className="form-input" 
+                                    type="number" 
+                                    placeholder="Ingrese el id del empleado"
+                                    onChange={this.handleChange}
+                                    value={this.state.interviewer.employeeId}
+                      />
                     </Form.Group>
 
-                    <Form.Group controlId="employeeEID">
+                    <Form.Group>
                       <Form.Label><strong>EID</strong></Form.Label>
-                      <Form.Control className="form-input" type="text" placeholder="Ingrese el EID" />
+                      <Form.Control id="employeeEID" 
+                                    name="employeeEID"
+                                    className="form-input" 
+                                    type="text" 
+                                    placeholder="Ingrese el EID"
+                                    onChange={this.handleChange}
+                                    value={this.state.interviewer.employeeEID}
+                      />
                     </Form.Group>
                   </div>
                 ) :
@@ -118,7 +189,7 @@ class Register extends Component {
             </Modal.Body>
 
             <Modal.Footer>
-              <Button variant="primary" onClick={() => this.handleClose()}>
+              <Button variant="primary" type="submit">
                 Guardar
               </Button>
             </Modal.Footer>
@@ -132,4 +203,16 @@ class Register extends Component {
   }
 }
 
-export default Register;
+const mapStateToProps = (state) => {
+  return {
+    interviewer: state.interviewer
+  }
+}
+
+const mapDispatchToProps = () => {
+  return {
+    addInterviewerAction
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps())(Register);

@@ -119,7 +119,7 @@ class Summary extends Component {
             </div>
 
             <div className="summary-footer">
-              <div className="finish-button">
+              <div className="finish-button disabled">
                 <p>Finalizar</p>
               </div>
             </div>

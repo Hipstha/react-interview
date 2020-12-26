@@ -1,0 +1,266 @@
+{
+  "interviewer" : [
+    {
+      "id": 1,
+      "name": "Daniel Alejandro Cruz Pérez",
+      "employeeId": 123456,
+      "eid": "daniel.cruz.perez"
+    },
+    {
+      "id": 2,
+      "name": "Alan Neftaly",
+      "employeeId": 234567,
+      "eid": "alan.neftaly.perez"
+    }
+  ],
+  "candidate": [
+    {
+      "id": 1,
+      "name": "Erick Ibarra Montelongo",
+      "email": "erick@erick.com",
+      "type": "Interno",
+      "skills" : [
+        {
+          "id": 1,
+          "name": "Javascript",
+          "questions": [
+            {
+              "id": 1,
+              "question": "¿Diferencia entre let, const y var?",
+              "score": "Correcto",
+              "notes": "Se confunde"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "name": "ReactJS",
+          "question": [
+            {
+              "id": 1,
+              "question": "¿React es una librería o un framework?",
+              "score": "Incorrect",
+              "notes": "Piensa que es un framework"
+            }
+          ]
+        }
+      ],
+      "interviewer": {
+        "id": 1,
+        "name": "Daniel Alejandro Cruz Pérez",
+        "eid": "daniel.cruz.perez"
+      }
+    }
+  ],
+  "skills": [
+    {
+      "id": 1,
+      "name": "Javascript",
+      "questions": [
+        {
+          "id": 1,
+          "quest": "¿Qué es javascript?"
+        },
+        {
+          "id": 2,
+          "quest": "¿Qué diferencia hay entre java y javascript?"
+        },
+        {
+          "id": 3,
+          "quest": "¿Qué tipo de datos se manejan en javascript?"
+        },
+        {
+          "id": 4,
+          "quest": "¿Para qué sirve la función isNaN?"
+        },
+        {
+          "id": 5,
+          "quest": "¿Qué significa la palabta 'this' en javascript?"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "React",
+      "questions": [
+        {
+          "id": 1,
+          "quest": "¿Qué es React?"
+        },
+        {
+          "id": 2,
+          "quest": "¿Qué es JSX?"
+        },
+        {
+          "id": 3,
+          "quest": "¿Qué son los componentes?"
+        },
+        {
+          "id": 4,
+          "quest": "¿Diferencia entre React y ReactNative?"
+        },
+        {
+          "id": 5,
+          "quest": "¿Para qué sirve setState?"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Angular",
+      "questions": [
+        {
+          "id": 1,
+          "quest": "¿Qué es Angular?"
+        },
+        {
+          "id": 2,
+          "quest": "¿Qué diferencia hay entre AngularJS y Angular?"
+        },
+        {
+          "id": 3,
+          "quest": "¿Qué son las directivas?"
+        },
+        {
+          "id": 4,
+          "quest": "¿Qué es un componente?"
+        },
+        {
+          "id": 5,
+          "quest": "¿Qué es angular CLI?"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "HTML",
+      "questions": [
+        {
+          "id": 1,
+          "quest": "¿Qué es es HTML?"
+        },
+        {
+          "id": 2,
+          "quest": "¿Qué son las etiquetas?"
+        },
+        {
+          "id": 3,
+          "quest": "¿Cómo se inserta un comentario en HTML?"
+        },
+        {
+          "id": 4,
+          "quest": "¿Qué son las hojas de estilo?"
+        },
+        {
+          "id": 5,
+          "quest": "¿Como se insertan scripts en JavaScript?"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "CSS",
+      "questions": [
+        {
+          "id": 1,
+          "quest": "¿Qué es CSS?"
+        },
+        {
+          "id": 2,
+          "quest": "¿Combo cambiar el color de las letras?"
+        },
+        {
+          "id": 3,
+          "quest": "¿Cómo cambiar el color de fondo?"
+        },
+        {
+          "id": 4,
+          "quest": "¿Cómo cambiar la fuente de la letra?"
+        },
+        {
+          "id": 5,
+          "quest": "¿Cómo se usa flex-box?"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Typescript",
+      "questions": [
+        {
+          "id": 1,
+          "quest": "¿Qué es Typescript?"
+        },
+        {
+          "id": 2,
+          "quest": "¿Diferencia entre javascript y Typescript?"
+        },
+        {
+          "id": 3,
+          "quest": "¿Cómo asignar un tipado a una variable?"
+        },
+        {
+          "id": 4,
+          "quest": "¿Cómo importar clases en Typescript?"
+        },
+        {
+          "id": 5,
+          "quest": "¿Qué es un archivo .tsc?"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "name": "GIT",
+      "questions": [
+        {
+          "id": 1,
+          "quest": "¿Qué es GIT?"
+        },
+        {
+          "id": 2,
+          "quest": "¿Qué diferencia hay entre GIT y Github?"
+        },
+        {
+          "id": 3,
+          "quest": "¿Qué es una rama?"
+        },
+        {
+          "id": 4,
+          "quest": "¿Qué es un commit?"
+        },
+        {
+          "id": 5,
+          "quest": "¿Qué es la rama main?"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "name": "NodeJS",
+      "questions": [
+        {
+          "id": 1,
+          "quest": "¿Qué es nodeJS?"
+        },
+        {
+          "id": 2,
+          "quest": "¿Para qué sirve nodeJS?"
+        },
+        {
+          "id": 3,
+          "quest": "¿Qué es express?"
+        },
+        {
+          "id": 4,
+          "quest": "¿Qué es un socket?"
+        },
+        {
+          "id": 5,
+          "quest": "¿Qué es REST?"
+        }
+      ]
+    }
+
+  ]
+}

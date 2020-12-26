@@ -2,6 +2,10 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 
+// Redux
+import { Provider } from 'react-redux';
+import store from './redux/store/Store';
+
 // Shared Modules
 import Header from './modules/shared/Header/Header';
 
@@ -19,23 +23,24 @@ class App extends Component {
     return (
       <>
         <Router>
+          <Provider store={store}>
+            <Header />
+            <div className="contain">
 
-          <Header />
-          <div className="contain">
+              <Switch>
+                <Route exact path="/">
+                  <Redirect to="/interviewers" />
+                </Route>
+                {/* NAVIGATION */}
+                <Route path="/interviewers" component={ Interviewer } />
+                <Route path="/candidates" component={ Candidate } />
+                <Route path="/questions" component={ Questions } />
+                <Route path="/summary" component={ Summary } />
+              </Switch>
 
-            <Switch>
-              <Route exact path="/">
-                <Redirect to="/interviewers" />
-              </Route>
-              {/* NAVIGATION */}
-              <Route path="/interviewers" component={ Interviewer } />
-              <Route path="/candidates" component={ Candidate } />
-              <Route path="/questions" component={ Questions } />
-              <Route path="/summary" component={ Summary } />
-            </Switch>
-
-            {/* <Interviewer /> */}
-          </div>
+              {/* <Interviewer /> */}
+            </div>
+          </Provider>
         </Router>
       </>
     )

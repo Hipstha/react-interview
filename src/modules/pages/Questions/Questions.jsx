@@ -22,13 +22,18 @@ class Questions extends Component {
     }
   }
 
+  submittedForm(e) {
+    e.preventDefault();
+    console.log('Se dio click al submit');
+  }
+
   render() {
     const { nextIcon, prevIcon } = this.arrows;
     return (
       <section className="questions">
         <Title title="Preguntas" />
         <article className="questions-content">
-          <Form>
+          <Form onSubmit={this.submittedForm}>
             
             <Carousel nextIcon ={nextIcon} prevIcon={prevIcon} interval={null} >
 
@@ -47,8 +52,8 @@ class Questions extends Component {
               
             </Carousel>
 
-            <Button variant="primary" type="submit">
-              Submit
+            <Button className="submit-questions-form disabled" variant="primary" type="submit">
+              Finalizar
             </Button>
           </Form>
           

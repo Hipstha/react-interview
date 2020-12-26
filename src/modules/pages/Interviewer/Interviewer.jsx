@@ -2,46 +2,115 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
+// redux
+import { connect } from 'react-redux';
+import { getInterviewersAction } from '../../../redux/actions/InterviewerActions';
+
 // Components modules
 import Title from '../../components/Title/Title';
+import Loading from '../../components/Loading/Loading';
 import Register from '../../components/Register/Register';
 import Interv from '../../components/Interv/Interv';
 import RegisterSmall from '../../components/RegisterSmall/RegisterSmall';
 import { NextButton, NextButtonDisabled } from '../../components/NavButton/NavButtons';
+
 
 // styles
 import './Interviewer.scss';
 
 
 class Interviewer extends Component {
-  render() {
-    const interv = {
-      name: 'Alejandro Cruz',
-      userId: 123456,
-      EID: 'daniel.cruz.perez'
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      interviewerData: {
+        interviewers: [],
+        error: false,
+        loading: false,
+        interviewerDelete: null,
+        interviewerUpdate: null,
+        isInterviewerToUpdate: null
+      }
+    };
+  }
+
+  componentDidMount() {
+    this.props.getInterviewersAction();
+    this.setState({
+      interviewerData: this.props.interviewer
+    })
+  }
+
+  shouldComponentUpdate(nextProps) {
+    if(this.state.interviewerData.loading !== nextProps.interviewer.loading) {
+      this.setState({
+        interviewerData: this.props.interviewer
+      });
+      return true;
+    } else {
+      return false;
     }
+  }
+
+  render() {
+    const { error, loading, interviewers } = this.state.interviewerData;
+    if(error) {}
     return (
       <div className="interviewer">
         <Title title="Entrevistadores" />
 
-        <Register type="entrevistador" />
-
-        <div className="interviewer-squares">
-          <Interv data={interv} />
-
-          <RegisterSmall type="entrevistador" />
-        </div>
-
-        <div className="interviewer-footer">
-          {/* <PrevButton /> */}
-          <NextButtonDisabled />
-          <Link to="/candidates">
-            <NextButton />
-          </Link>
-        </div>
+        {
+          loading === true ? (<Loading />) : null
+        }
+        
+        {
+          interviewers.length === 0 ? 
+          (
+            <>
+              <Register type="entrevistador" />
+              <div className="interviewer-footer">
+                {/* <PrevButton /> */}
+                <NextButtonDisabled />
+              </div>
+            </>
+          ) : 
+          (
+            <>
+              <div className="interviewer-squares">
+                {
+                  interviewers.map(interv => (
+                    <Interv key={interv.id} data={interv} />
+                  ))
+                }
+                <RegisterSmall type="entrevistador" />
+              </div>
+              <div className="interviewer-footer">
+                <NextButtonDisabled />
+                <Link to="/candidates">
+                  <NextButton />
+                </Link>
+              </div>
+            </>
+          )
+        }
+        
+        
       </div>
     )
   }
 }
 
-export default Interviewer;
+const mapStateToProps = (state) => {
+  return {
+    interviewer: state.interviewer
+  }
+}
+
+const mapDispatchToProps = () => {
+  return {
+    getInterviewersAction
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps())(Interviewer)

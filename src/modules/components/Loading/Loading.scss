@@ -1,0 +1,11 @@
+@import '../../../scss/variables/variables.scss';
+
+.spinner-container {
+  text-align: center;
+  margin-bottom: 3rem;
+  .loading-spinner{
+    color: $default-color;
+    width: 5rem;
+    height: 5rem;
+  }
+}

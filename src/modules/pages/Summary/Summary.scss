@@ -5,6 +5,7 @@
     .row {
       .col {
         .candidate-data {
+          width: 100%;
           .title {
             h3 {
 
@@ -94,6 +95,10 @@
           font-size: 1.2rem;
           margin: 0;
         }
+      }
+      .disabled {
+        background-color: $disabled;
+        cursor: not-allowed;
       }
     }
 
