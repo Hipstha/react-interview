@@ -27,10 +27,7 @@ class Interviewer extends Component {
       interviewerData: {
         interviewers: [],
         error: false,
-        loading: false,
-        interviewerDelete: null,
-        interviewerUpdate: null,
-        isInterviewerToUpdate: null
+        loading: false
       }
     };
   }

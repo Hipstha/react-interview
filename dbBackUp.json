@@ -1,5 +1,5 @@
 {
-  "interviewer" : [
+  "interviewers" : [
     {
       "id": 1,
       "name": "Daniel Alejandro Cruz Pérez",
@@ -13,7 +13,7 @@
       "eid": "alan.neftaly.perez"
     }
   ],
-  "candidate": [
+  "candidates": [
     {
       "id": 1,
       "name": "Erick Ibarra Montelongo",
@@ -34,7 +34,7 @@
         },
         {
           "id": 2,
-          "name": "ReactJS",
+          "name": "React",
           "question": [
             {
               "id": 1,

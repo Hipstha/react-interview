@@ -1,17 +1,17 @@
 {
-  "interviewer": [
-    {
-      "name": "aa",
-      "employeeId": "11",
-      "employeeEID": "aa",
-      "id": 1
-    }
-  ],
-  "candidate": [
+  "interviewers": [
     {
       "id": 1,
-      "name": "Erick Ibarra Montelongo",
-      "email": "erick@erick.com",
+      "name": "Daniel Alejandro Cruz",
+      "employeeId": "2222",
+      "employeeEID": "danie.cruz"
+    }
+  ],
+  "candidates": [
+    {
+      "id": 1,
+      "name": "Daniel Alejandro Cruz Pérez",
+      "email": "alex_crz97@hotmail.com",
       "type": "Interno",
       "skills": [
         {
@@ -20,30 +20,110 @@
           "questions": [
             {
               "id": 1,
-              "question": "¿Diferencia entre let, const y var?",
-              "score": "Correcto",
-              "notes": "Se confunde"
+              "quest": "¿Qué es javascript?",
+              "score": "",
+              "notes": ""
+            },
+            {
+              "id": 2,
+              "quest": "¿Qué diferencia hay entre java y javascript?",
+              "score": "",
+              "notes": ""
+            },
+            {
+              "id": 3,
+              "quest": "¿Qué tipo de datos se manejan en javascript?",
+              "score": "",
+              "notes": ""
+            },
+            {
+              "id": 4,
+              "quest": "¿Para qué sirve la función isNaN?",
+              "score": "",
+              "notes": ""
+            },
+            {
+              "id": 5,
+              "quest": "¿Qué significa la palabta 'this' en javascript?",
+              "score": "",
+              "notes": ""
             }
           ]
         },
         {
-          "id": 2,
-          "name": "ReactJS",
-          "question": [
+          "id": 4,
+          "name": "HTML",
+          "questions": [
             {
               "id": 1,
-              "question": "¿React es una librería o un framework?",
-              "score": "Incorrect",
-              "notes": "Piensa que es un framework"
+              "quest": "¿Qué es es HTML?",
+              "score": "",
+              "notes": ""
+            },
+            {
+              "id": 2,
+              "quest": "¿Qué son las etiquetas?",
+              "score": "",
+              "notes": ""
+            },
+            {
+              "id": 3,
+              "quest": "¿Cómo se inserta un comentario en HTML?",
+              "score": "",
+              "notes": ""
+            },
+            {
+              "id": 4,
+              "quest": "¿Qué son las hojas de estilo?",
+              "score": "",
+              "notes": ""
+            },
+            {
+              "id": 5,
+              "quest": "¿Como se insertan scripts en JavaScript?",
+              "score": "",
+              "notes": ""
+            }
+          ]
+        },
+        {
+          "id": 6,
+          "name": "Typescript",
+          "questions": [
+            {
+              "id": 1,
+              "quest": "¿Qué es Typescript?",
+              "score": "",
+              "notes": ""
+            },
+            {
+              "id": 2,
+              "quest": "¿Diferencia entre javascript y Typescript?",
+              "score": "",
+              "notes": ""
+            },
+            {
+              "id": 3,
+              "quest": "¿Cómo asignar un tipado a una variable?",
+              "score": "",
+              "notes": ""
+            },
+            {
+              "id": 4,
+              "quest": "¿Cómo importar clases en Typescript?",
+              "score": "",
+              "notes": ""
+            },
+            {
+              "id": 5,
+              "quest": "¿Qué es un archivo .tsc?",
+              "score": "",
+              "notes": ""
             }
           ]
         }
       ],
-      "interviewer": {
-        "id": 1,
-        "name": "Daniel Alejandro Cruz Pérez",
-        "eid": "daniel.cruz.perez"
-      }
+      "interviewer": {}
     }
   ],
   "skills": [

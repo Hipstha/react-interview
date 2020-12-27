@@ -14,21 +14,11 @@ import {
   UPDATE_INTERVIEWER_ERROR
 } from '../types/InterviewerTypes';
 
-// const interviewersEmpty = {
-//   id: 0,
-//   name: '',
-//   employeeId: 0,
-//   eid: ''
-// }
-
 // reducer state 
 const initialState = {
   interviewers: [],
   error: false,
-  loading: false,
-  interviewerDelete: null,
-  interviewerUpdate: null,
-  isInterviewerToUpdate: null
+  loading: false
 }
 
 const InterviewerReducer = (state = initialState, action) => {

@@ -1,55 +1,121 @@
 // Libraries
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
+
+// redux
+import { connect } from 'react-redux';
+import { getCandidatesAction } from '../../../redux/actions/candidateActions';
 
 // Components modules
 import Title from '../../components/Title/Title';
 import Register from '../../components/Register/Register';
 import CandidateData from '../../components/CandidateData/CandidateData';
 import Skills from '../../components/Skills/Skills';
+import Loading from '../../components/Loading/Loading';
 import { NextButton, NextButtonDisabled, PrevButton } from '../../components/NavButton/NavButtons';
 
 // styles
 import './Candidate.scss';
 
 class Candidate extends Component {
-  render() {
-    const candidate = {
-      name: 'Daniel Alejandro Cruz Pérez',
-      email: 'alex_crz97@hotmail.com',
-      type: 'Interno'
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      candidateData: {
+        candidates: [],
+        error: false,
+        loading: false
+      }
+    };
+  }
+
+  componentDidMount() {
+    this.props.getCandidatesAction();
+  }
+
+  shouldComponentUpdate(nextProps) {
+    if (this.state.candidateData.loading !== nextProps.candidate.loading) {
+      this.setState({
+        candidateData: this.props.candidate
+      });
+      return true;
+    } else {
+      return false;
     }
-    
-    const skills = [];
+  }
+
+  render() {
+
+    const { loading, candidates } = this.state.candidateData;
 
     return (
       <div className="candidate">
         <Title title="Candidatos" />
 
-        <Register type="candidato" />
+        {
+          loading === true ? (<Loading />): null
+        }
 
-        <div className="candidate-body">
-          <CandidateData data={candidate} />
-
-          <Skills data={skills} />
-        </div>
-
-        <div className="candidate-footer">
-
-          <Link to="/interviewers">
-            <PrevButton />
-          </Link>
-
-          <NextButtonDisabled />
-
-          <Link to="/questions">
-            <NextButton />
-          </Link>
-
-        </div>
+        {
+          (candidates.length === 0) ?
+          (
+            <>
+              <Register type="candidato" />
+              <div className="candidate-footer">
+                <Link to="/interviewers">
+                  <PrevButton />
+                </Link>
+                <NextButtonDisabled />
+              </div>
+            </>
+          ) :
+          (
+            <>
+              <div className="candidate-body">
+                {
+                  candidates.map((candidate, idx) => (
+                    <Fragment key={candidate.id}>
+                      <CandidateData data={candidate} />
+                      <Skills data={candidate} />
+                    </Fragment>
+                  ))
+                }
+              </div>
+              <div className="candidate-footer">
+                <Link to="/interviewers">
+                  <PrevButton />
+                </Link>
+                {
+                  candidates[0].skills.length === 0 ? 
+                  (
+                    <NextButtonDisabled />
+                  ) : (
+                    <Link to="/questions">
+                      <NextButton />
+                    </Link>
+                  )
+                }
+                
+              </div>
+            </>
+          )
+        }
       </div>
     )
   }
 }
 
-export default Candidate;
+const mapStateToProps = (state) => {
+  return {
+    candidate: state.candidate
+  }
+}
+
+const mapDispatchToProps = () => {
+  return {
+    getCandidatesAction
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps())(Candidate);

@@ -1,10 +1,5 @@
-// libraries
-
-// api server
-import axiosClient from '../../config/axios';
-
 // classes
-import Alerts from '../../Classes/Alerts';
+import Crud from '../../Classes/Crud';
 
 // types
 import {
@@ -22,21 +17,18 @@ import {
   UPDATE_INTERVIEWER_ERROR
 } from '../types/InterviewerTypes';
 
-const alerts = new Alerts();
+// global variables
+const crud = new Crud();
+const endpoint = '/interviewers';
 
 // functions to get all interviewers
 export function getInterviewersAction() {
-  return async(dispatch) => {
-    dispatch( getInterviewers() );
-    try {
-      const resp = await axiosClient.get('/interviewer');
-      dispatch( getInterviewersSuccess(resp.data) );
-    }
-    catch(error) {
-      console.log(error);
-      dispatch( getInterviewersError() );
-    }
-  }
+  return crud.getElement(
+    endpoint,
+    getInterviewers,
+    getInterviewersSuccess,
+    getInterviewersError
+  )
 }
 
 const getInterviewers = () => ({
@@ -56,17 +48,13 @@ const getInterviewersError = () => ({
 
 // functions to create an interviewer
 export function addInterviewerAction(interviewer) {
-  return async (dispatch) => {
-    dispatch( addInterviewer() );
-    try {
-      const resp = await axiosClient.post('/interviewer', interviewer);
-      dispatch( addInterviewerSuccess(resp.data) );
-      alerts.getSuccessAlert('Se ha ingresado con correctamente');
-    } catch(error) {
-      console.log(error);
-      dispatch( addInterviewerError() );
-    }
-  }
+  return crud.addElement(
+    endpoint,
+    interviewer,
+    addInterviewer,
+    addInterviewerSuccess,
+    addInterviewerError
+  )
 }
 
 const addInterviewer = () => ({
@@ -86,23 +74,13 @@ const addInterviewerError = () => ({
 
 // functions to delete an interviewer
 export function deleteInterviewerAction(id) {
-  return (dispatch) => {
-    try {
-      alerts.getConfirmAlert(
-        'Esta seguro que desea eliminar este objeto?'
-      ).then((result) => {
-        if(result.isConfirmed) {
-          dispatch( deleteInterviewer() );
-          axiosClient.delete(`/interviewer/${id}`);
-          dispatch( deleteInterviewerSuccess(id) )
-          alerts.getSuccessAlert('Se ha eliminado con éxito');
-        }
-      });
-    } catch(error) {
-      console.log(error);
-      dispatch( deleteInterviewerError() );
-    }
-  }
+  return crud.deleteElement(
+    endpoint,
+    id,
+    deleteInterviewer,
+    deleteInterviewerSuccess,
+    deleteInterviewerError
+  );
 }
 
 const deleteInterviewer = () => ({
@@ -122,27 +100,13 @@ const deleteInterviewerError = () => ({
 
 // functions to update an Interviewer
 export function updateInterviewerActions(interviewer) {
-  return (dispatch) => {
-    try {
-      alerts.getConfirmAlert(
-        'Esta seguro que desea modificar este objeto?'
-      ).then((result) => {
-        if(result.isConfirmed) {
-          dispatch( updateInterviewer() );
-          console.log(interviewer);
-          axiosClient.put(
-            `/interviewer/${interviewer.id}`, 
-            interviewer
-          );
-          dispatch( updateInterviewerSuccess(interviewer) );
-          alerts.getSuccessAlert('Se ha modifcado con éxito');
-        }
-      })
-    } catch(error) {
-      console.log(error);
-      dispatch( updateInterviewerError() );
-    }
-  }
+  return crud.updateElement(
+    endpoint,
+    interviewer,
+    updateInterviewer,
+    updateInterviewerSuccess,
+    updateInterviewerError
+  )
 }
 
 const updateInterviewer = () => ({

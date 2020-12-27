@@ -7,6 +7,16 @@
     border-top: 1px solid $default-color;
     border-bottom: 1px solid $default-color;
     padding: 1rem 2rem 2rem;
+    cursor: pointer;
+    &:hover {
+      .data-header {
+        .icon {
+          i {
+            color: black;
+          }
+        }
+      }
+    }
     .data-header {
       display: flex;
       align-items: center;
@@ -16,6 +26,7 @@
         i {
           color: $default-color;
           font-size: 4rem;
+          transition: 0.3s;
         }
       }
       .data-name {
@@ -45,5 +56,13 @@
         margin: 0;
       }
     }
+  }
+}
+
+.footer-interv {
+  display: flex;
+  justify-content: space-between;
+  .delete-interv {
+
   }
 }

@@ -9,6 +9,7 @@ import Alerts from '../../../Classes/Alerts';
 // redux
 import { connect } from 'react-redux';
 import { addInterviewerAction } from '../../../redux/actions/InterviewerActions';
+import { addCandidateAction } from '../../../redux/actions/candidateActions';
 
 // styles
 import './Register.scss';
@@ -27,10 +28,18 @@ class Register extends Component {
         name: '',
         employeeId: '',
         employeeEID: ''
+      },
+      candidate: {
+        name: '',
+        email: '',
+        type: '',
+        skills: [],
+        interviewer: {}
       }
     };
     this.submittedForm = this.submittedForm.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleChangeCandidate = this.handleChangeCandidate.bind(this);
     this.thisProps.setProps(props);
     this.type = this.thisProps.getProps().type;
   }
@@ -64,8 +73,25 @@ class Register extends Component {
           employeeEID
         }
       );
-      this.handleClose();
+    } else if(this.type === 'candidato') {
+      const name = this.state.candidate.name;
+      const email = this.state.candidate.email;
+      const type = this.state.candidate.type;
+      const skills = this.state.candidate.skills;
+      const interviewer = this.state.candidate.interviewer;
+      if(name === '' || email === '' || type === '') {
+        this.alerts.getErrorAlert('Todos los campos son obligatorios');
+        return;
+      }
+      this.props.addCandidateAction({
+        name,
+        email,
+        type,
+        skills,
+        interviewer
+      });
     }
+    this.handleClose();
   }
 
   handleChange(e) {
@@ -73,9 +99,20 @@ class Register extends Component {
     const name = target.name;
     const value = target.value;
     this.setState({
-      show: this.state.show,
       interviewer: {
         ...this.state.interviewer,
+        [name]: value
+      }
+    });
+  }
+
+  handleChangeCandidate(e) {
+    const target = e.target;
+    const name = target.name;
+    const value = target.value;
+    this.setState({
+      candidate: {
+        ...this.state.candidate,
         [name]: value
       }
     });
@@ -164,17 +201,35 @@ class Register extends Component {
                   <div>
                     <Form.Group controlId="candidateName">
                       <Form.Label><strong>Nombre completo</strong></Form.Label>
-                      <Form.Control className="form-input" type="text" placeholder="Nombre del candidato" />
+                      <Form.Control className="form-input" 
+                                    type="text" 
+                                    placeholder="Nombre del candidato" 
+                                    name="name"
+                                    onChange={this.handleChangeCandidate}
+                                    value={this.state.candidate.name}
+                      />
                     </Form.Group>
 
                     <Form.Group controlId="employeeId">
                       <Form.Label><strong>Correo electrónico</strong></Form.Label>
-                      <Form.Control className="form-input" type="email" placeholder="Ingrese el email del candidato" />
+                      <Form.Control className="form-input" 
+                                    type="email" 
+                                    placeholder="Ingrese el email del candidato"
+                                    name="email"
+                                    onChange={this.handleChangeCandidate}
+                                    value={this.state.candidate.email}
+
+                                     />
                     </Form.Group>
 
                     <Form.Group controlId="employeeEID">
                       <Form.Label><strong>Tipo</strong></Form.Label>
-                      <Form.Control as="select" className="form-input">
+                      <Form.Control as="select"
+                                    className="form-input"
+                                    name="type"
+                                    onChange={this.handleChangeCandidate}
+                                    value={this.state.candidate.type}
+                      >
                         <option value="">Seleccionar</option>
                         <option value="Interno">Interno</option>
                         <option value="Contractor">Contractor</option>
@@ -211,7 +266,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = () => {
   return {
-    addInterviewerAction
+    addInterviewerAction,
+    addCandidateAction
   }
 }
 
