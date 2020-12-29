@@ -2,6 +2,13 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Install json-server
+sudo apt-get install json-server
+
+### `json-server db.json -p 4000`
+
+With this script, you could create a fake back-end to work as database
+
 ## Available Scripts
 
 In the project directory, you can run:
