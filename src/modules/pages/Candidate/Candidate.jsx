@@ -12,6 +12,7 @@ import Register from '../../components/Register/Register';
 import CandidateData from '../../components/CandidateData/CandidateData';
 import Skills from '../../components/Skills/Skills';
 import Loading from '../../components/Loading/Loading';
+import Error from '../../components/Error/Error';
 import { NextButton, NextButtonDisabled, PrevButton } from '../../components/NavButton/NavButtons';
 
 // styles
@@ -47,10 +48,14 @@ class Candidate extends Component {
 
   render() {
 
-    const { loading, candidates } = this.state.candidateData;
-
+    const { error, loading, candidates } = this.state.candidateData;
+    if(error) {
+      return (
+        <Error />
+      )
+    }
     return (
-      <div className="candidate">
+      <div className="candidate animate__animated animate__fadeIn">
         <Title title="Candidatos" />
 
         {

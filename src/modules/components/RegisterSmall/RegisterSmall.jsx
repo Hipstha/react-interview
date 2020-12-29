@@ -90,7 +90,7 @@ class RegisterSmall extends Component {
     const { type } = this.thisProps.getProps();
     return (
       <>
-        <article className="registerSmall" onClick={ () => this.handleShow() }>
+        <article className="registerSmall animate__animated animate__fadeIn" onClick={ () => this.handleShow() }>
           <div className="icon">
             <i className="fas fa-user-plus"></i>
           </div>

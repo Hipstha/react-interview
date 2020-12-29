@@ -13,6 +13,7 @@ import Alerts from '../../../Classes/Alerts';
 import Title from '../../components/Title/Title';
 import Loading from '../../components/Loading/Loading';
 import Question from '../../components/Question/Question';
+import Error from '../../components/Error/Error';
 
 // styles
 import './Questions.scss';
@@ -116,8 +117,18 @@ class Questions extends Component {
 
   render() {
     const { nextIcon, prevIcon } = this.arrows;
-    const { loading, candidates } = this.state.candidate;
+    const { error, loading, candidates } = this.state.candidate;
+    if(error) {
+      return (
+        <Error />
+      )
+    }
     const thisCandidate = candidates[0];
+    if(thisCandidate.interviewd) {
+      setTimeout(() => {
+        this.props.history.push('/interview');
+      }, 100)
+    }
     let skills = [];
     let questions = [];
     let arrayLength = 0;
@@ -133,7 +144,7 @@ class Questions extends Component {
       })
     }
     return (
-      <section className="questions">
+      <section className="questions animate__animated animate__fadeIn">
         <Title title="Preguntas" />
         {
           loading === true ? (<Loading />): null
@@ -167,8 +178,6 @@ class Questions extends Component {
               Finalizar
             </Button>
           </Form>
-          
-
           
         </article>
       </section>

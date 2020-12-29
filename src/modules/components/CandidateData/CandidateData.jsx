@@ -24,16 +24,18 @@ class CandidateData extends Component {
   constructor(props) {
     super(props);
     this.thisProps.setProps(props);
-    const { id, name, email, type } = this.thisProps.getProps().data;
+    const { id, name, email, skills, interviewd, interviewer, type } = this.thisProps.getProps().data;
     this.state = {
       show: false,
+      loading: false,
       candidate: {
         id,
         name,
         email,
         type,
-        skills: [],
-        interviewer: {}
+        interviewd,
+        skills,
+        interviewer
       }
     };
     this.name = name;
@@ -44,6 +46,32 @@ class CandidateData extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.submittedForm = this.submittedForm.bind(this);
     this.deleteCandidate = this.deleteCandidate.bind(this);
+  }
+
+  componentDidMount() {
+    const { id, name, email, interviewd, skills, interviewer, type } = this.thisProps.getProps().data;
+    this.setState({
+      candidate: {
+        id,
+        name,
+        email,
+        interviewd,
+        skills,
+        type,
+        interviewer
+      }
+    })
+  }
+
+  shouldComponentUpdate(nextProps) {
+    // console.log(nextProps);
+    if (this.state.loading !== nextProps.candidate.loading) {
+      this.setState({
+        candidate: this.props.candidate.candidates[0],
+        loading: this.props.candidate.loading
+      });
+    }
+    return true;
   }
 
   handleClose() {
@@ -72,12 +100,14 @@ class CandidateData extends Component {
 
   submittedForm(e) {
     e.preventDefault();
+    // console.log(this.state.candidate);
     const id = this.state.candidate.id;
     const name = this.state.candidate.name;
     const email = this.state.candidate.email;
     const type = this.state.candidate.type;
     const skills = this.state.candidate.skills;
     const interviewer = this.state.candidate.interviewer;
+    const interviewd = this.state.candidate.interviewd;
     if(id === '' || name === '' || email === '' || type === '') {
       this.alerts.getErrorAlert('Todos los campos son obligatorios');
       return;
@@ -88,6 +118,7 @@ class CandidateData extends Component {
       email,
       type,
       skills,
+      interviewd,
       interviewer
     });
     this.name = name;
@@ -100,10 +131,13 @@ class CandidateData extends Component {
   }
 
   render() {
+
+    const interviewd = this.state.candidate.interviewd;
+    console.log(interviewd)
     
     return (
       <>
-        <article className="candidate-data">
+        <article className="candidate-data animate__animated animate__fadeIn">
           <div className="candidate-container" onClick={this.handleShow}>
             <div className="data-header">
               <div className="icon">
@@ -153,6 +187,7 @@ class CandidateData extends Component {
                               name="name"
                               onChange={this.handleChange}
                               value={this.state.candidate.name}
+                              disabled={interviewd}
                 />
               </Form.Group>
 
@@ -164,8 +199,8 @@ class CandidateData extends Component {
                               name="email"
                               onChange={this.handleChange}
                               value={this.state.candidate.email}
-
-                                />
+                              disabled={interviewd}
+                />
               </Form.Group>
 
               <Form.Group controlId="employeeEID">
@@ -175,6 +210,7 @@ class CandidateData extends Component {
                               name="type"
                               onChange={this.handleChange}
                               value={this.state.candidate.type}
+                              disabled={interviewd}
                 >
                   <option value="">Seleccionar</option>
                   <option value="Interno">Interno</option>
@@ -188,9 +224,19 @@ class CandidateData extends Component {
               <Button onClick={this.deleteCandidate} variant="danger" className="delete-interv" type="button">
                 Eliminar
               </Button>
-              <Button variant="primary" type="submit">
-                Editar
-              </Button>
+              {
+                interviewd === true ?
+                (
+                  <Button variant="secondary" type="button" disabled={interviewd}>
+                    Editar
+                  </Button>
+                ) :
+                (
+                  <Button variant="primary" type="submit">
+                    Editar
+                  </Button>
+                )
+              }
             </Modal.Footer>
 
 

@@ -4,8 +4,9 @@ import { Modal } from 'react-bootstrap';
 
 // redux
 import { connect } from 'react-redux';
-import { getCandidatesAction } from '../../../redux/actions/candidateActions';
+import { getCandidatesAction, updateCandidateFastAction } from '../../../redux/actions/candidateActions';
 import { addInterviewAction } from '../../../redux/actions/InterviewActions';
+import Error from '../../components/Error/Error';
 
 // Component modules
 import Title from '../../components/Title/Title';
@@ -81,9 +82,12 @@ class Summary extends Component {
       candidate: this.state.candidate.candidates[0],
       comments: comment
     }
+    let candidate = this.state.candidate.candidates[0];
+    candidate.interviewd = true;
     this.alerts.getConfirmAlert('¿Esta seguro que desea continuar?')
       .then((result) => {
         if(result.isConfirmed) {
+          this.props.updateCandidateFastAction(candidate);
           this.props.addInterviewAction(interview);
           setTimeout(() => {
             this.props.history.push('/interview');
@@ -93,7 +97,12 @@ class Summary extends Component {
   }
 
   render() {
-    const { loading, candidates } = this.state.candidate;
+    const { error, loading, candidates } = this.state.candidate;
+    if(error) {
+      return (
+        <Error />
+      )
+    }
     let candidate = {};
     let skills = [];
     if(candidates[0] !== undefined) {
@@ -102,7 +111,6 @@ class Summary extends Component {
         skills = candidate.skills;
       }
     }
-    console.log(skills);
     return (
       <>
 
@@ -110,7 +118,7 @@ class Summary extends Component {
           loading === true ? (<Loading />): null
         }
 
-        <div className="summary">
+        <div className="summary animate__animated animate__fadeIn">
           <Title title="Resumen" />
 
           <div className="summary-content">
@@ -262,6 +270,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = () => {
   return {
     getCandidatesAction,
+    updateCandidateFastAction,
     addInterviewAction
   }
 }

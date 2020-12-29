@@ -33,6 +33,7 @@ class Register extends Component {
         name: '',
         email: '',
         type: '',
+        interviewd: false,
         skills: [],
         interviewer: {}
       }
@@ -79,6 +80,7 @@ class Register extends Component {
       const type = this.state.candidate.type;
       const skills = this.state.candidate.skills;
       const interviewer = this.state.candidate.interviewer;
+      const interviewd = false;
       if(name === '' || email === '' || type === '') {
         this.alerts.getErrorAlert('Todos los campos son obligatorios');
         return;
@@ -88,6 +90,7 @@ class Register extends Component {
         email,
         type,
         skills,
+        interviewd,
         interviewer
       });
     }
@@ -120,7 +123,7 @@ class Register extends Component {
 
   render() {
     return (
-      <section className="register">
+      <section className="register animate__animated animate__fadeIn">
         <article className="register-container">
 
           <div className="register-title">

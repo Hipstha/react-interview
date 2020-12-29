@@ -12,6 +12,7 @@ import Loading from '../../components/Loading/Loading';
 import Register from '../../components/Register/Register';
 import Interv from '../../components/Interv/Interv';
 import RegisterSmall from '../../components/RegisterSmall/RegisterSmall';
+import Error from '../../components/Error/Error';
 import { NextButton, NextButtonDisabled } from '../../components/NavButton/NavButtons';
 
 
@@ -52,9 +53,13 @@ class Interviewer extends Component {
 
   render() {
     const { error, loading, interviewers } = this.state.interviewerData;
-    if(error) {}
+    if(error) {
+      return (
+        <Error />
+      )
+    }
     return (
-      <div className="interviewer">
+      <div className="interviewer animate__animated animate__fadeIn">
         <Title title="Entrevistadores" />
 
         {

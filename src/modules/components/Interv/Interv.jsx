@@ -95,7 +95,7 @@ class Interv extends Component {
   render() {
     return (
       <>
-        <article className="interviewer-square" onClick={this.handleShow}>
+        <article className="interviewer-square animate__animated animate__fadeIn" onClick={this.handleShow}>
           <div className="icon">
             <i className="far fa-user"></i>
           </div>

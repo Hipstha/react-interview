@@ -1,59 +1,12 @@
 {
   "interviewers" : [
-    {
-      "id": 1,
-      "name": "Daniel Alejandro Cruz Pérez",
-      "employeeId": 123456,
-      "eid": "daniel.cruz.perez"
-    },
-    {
-      "id": 2,
-      "name": "Alan Neftaly",
-      "employeeId": 234567,
-      "eid": "alan.neftaly.perez"
-    }
+
   ],
   "interviews": [
 
   ],
   "candidates": [
-    {
-      "id": 1,
-      "name": "Erick Ibarra Montelongo",
-      "email": "erick@erick.com",
-      "type": "Interno",
-      "skills" : [
-        {
-          "id": 1,
-          "name": "Javascript",
-          "questions": [
-            {
-              "id": 1,
-              "question": "¿Diferencia entre let, const y var?",
-              "score": "Correcto",
-              "notes": "Se confunde"
-            }
-          ]
-        },
-        {
-          "id": 2,
-          "name": "React",
-          "question": [
-            {
-              "id": 1,
-              "question": "¿React es una librería o un framework?",
-              "score": "Incorrect",
-              "notes": "Piensa que es un framework"
-            }
-          ]
-        }
-      ],
-      "interviewer": {
-        "id": 1,
-        "name": "Daniel Alejandro Cruz Pérez",
-        "eid": "daniel.cruz.perez"
-      }
-    }
+
   ],
   "skills": [
     {

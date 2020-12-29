@@ -65,7 +65,6 @@ class Crud {
               body
             );
             dispatch( getSuccess(body) );
-            // this.alerts.getSuccessAlert('Se ha modifcado con éxito');
           }
         })
       } catch(error) {

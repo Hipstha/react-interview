@@ -1,111 +1,12 @@
 {
-  "interviewers": [
-    {
-      "id": 1,
-      "name": "Daniel Alejandro Cruz Pérez",
-      "employeeId": "33",
-      "employeeEID": "daniel.cruz.perez"
-    }
+  "interviewers" : [
+
   ],
   "interviews": [
-    {
-      "candidate": {
-        "id": 1,
-        "name": "Daniel Alejandro Cruz Pérez",
-        "email": "alex_crz97@hotmail.com",
-        "type": "Interno",
-        "skills": [
-          {
-            "id": 1,
-            "name": "Javascript",
-            "questions": [
-              {
-                "id": 1,
-                "quest": "¿Qué es javascript?",
-                "score": "Correcto",
-                "notes": ""
-              },
-              {
-                "id": 2,
-                "quest": "¿Qué diferencia hay entre java y javascript?",
-                "score": "Correcto",
-                "notes": ""
-              },
-              {
-                "id": 3,
-                "quest": "¿Qué tipo de datos se manejan en javascript?",
-                "score": "Correcto",
-                "notes": ""
-              },
-              {
-                "id": 4,
-                "quest": "¿Para qué sirve la función isNaN?",
-                "score": "Correcto",
-                "notes": ""
-              },
-              {
-                "id": 5,
-                "quest": "¿Qué significa la palabta 'this' en javascript?",
-                "score": "Correcto",
-                "notes": ""
-              }
-            ],
-            "score": 100
-          }
-        ],
-        "interviewer": {}
-      },
-      "comments": "todo perfecto",
-      "id": 1
-    }
+
   ],
   "candidates": [
-    {
-      "id": 1,
-      "name": "Daniel Alejandro Cruz Pérez",
-      "email": "alex_crz97@hotmail.com",
-      "type": "Interno",
-      "skills": [
-        {
-          "id": 1,
-          "name": "Javascript",
-          "questions": [
-            {
-              "id": 1,
-              "quest": "¿Qué es javascript?",
-              "score": "Correcto",
-              "notes": ""
-            },
-            {
-              "id": 2,
-              "quest": "¿Qué diferencia hay entre java y javascript?",
-              "score": "Correcto",
-              "notes": ""
-            },
-            {
-              "id": 3,
-              "quest": "¿Qué tipo de datos se manejan en javascript?",
-              "score": "Correcto",
-              "notes": ""
-            },
-            {
-              "id": 4,
-              "quest": "¿Para qué sirve la función isNaN?",
-              "score": "Correcto",
-              "notes": ""
-            },
-            {
-              "id": 5,
-              "quest": "¿Qué significa la palabta 'this' en javascript?",
-              "score": "Correcto",
-              "notes": ""
-            }
-          ],
-          "score": 100
-        }
-      ],
-      "interviewer": {}
-    }
+
   ],
   "skills": [
     {
@@ -316,5 +217,6 @@
         }
       ]
     }
+
   ]
 }

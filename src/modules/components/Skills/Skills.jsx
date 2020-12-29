@@ -27,9 +27,10 @@ class Skills extends Component {
   constructor(props) {
     super(props);
     this.thisProps.setProps(props);
-    const { id, name, email, type, skills, interviewer } = this.thisProps.getProps().data;
+    const { id, name, email, type, skills, interviewd, interviewer } = this.thisProps.getProps().data;
     this.state = { 
       show: false,
+      loading: false,
       skills: {
         skills: [],
         error: false,
@@ -41,7 +42,8 @@ class Skills extends Component {
         email,
         type,
         skills,
-        interviewer
+        interviewer,
+        interviewd
       },
       skillsToEval: []
     };
@@ -52,12 +54,30 @@ class Skills extends Component {
 
   componentDidMount() {
     this.props.getSkillsAction();
+    const { id, name, email, interviewd, skills, interviewer, type } = this.thisProps.getProps().data;
+    this.setState({
+      candidate: {
+        id,
+        name,
+        email,
+        interviewd,
+        skills,
+        type,
+        interviewer
+      }
+    })
   }
 
-  shouldComponentUpdate(nextProp) {
-    if (this.state.skills.loading !== nextProp.skills.loading) {
+  shouldComponentUpdate(nextProps) {
+    if (this.state.skills.loading !== nextProps.skills.loading) {
       this.setState({
         skills: this.props.skills
+      });
+    }
+    if ( this.state.loading !== nextProps.candidate.loading ) {
+      this.setState({
+        candidate: this.props.candidate.candidates[0],
+        loading: this.props.candidate.loading
       });
     }
     return true;
@@ -117,6 +137,7 @@ class Skills extends Component {
     const type = this.state.candidate.type;
     const skills = skillsToSend;
     const interviewer = this.state.candidate.interviewer;
+    const interviewd = this.state.candidate.interviewd
     if(
       id === '' ||
       name === '' ||
@@ -135,7 +156,8 @@ class Skills extends Component {
       email,
       type,
       skills,
-      interviewer
+      interviewer,
+      interviewd
     });
 
     this.setState({
@@ -145,7 +167,8 @@ class Skills extends Component {
         email,
         type,
         skills,
-        interviewer
+        interviewer,
+        interviewd
       }
     });
     
@@ -157,14 +180,15 @@ class Skills extends Component {
     const { loading } = this.state.skills;
     const candidateSkills = this.state.candidate.skills;
     const skillsToEval = this.state.skillsToEval;
-
+    const interviewd = this.state.candidate.interviewd;
+    // console.log(interview)
     return (
       <>
         {
           loading === true ? (<Loading />): null
         }
 
-        <article className="skills">
+        <article className="skills animate__animated animate__fadeIn">
           <div className="skills-container">
             <div className="title">
               <h2>Skills a evaluar: </h2>
@@ -192,7 +216,7 @@ class Skills extends Component {
                   <ul>
                     {
                       candidateSkills.map( skill => (
-                        <li key={skill.id}>{ skill.name }</li>
+                        <li className="animate__animated animate__fadeIn" key={skill.id}>{ skill.name }</li>
                       ))
                     }
                   </ul>
@@ -225,6 +249,7 @@ class Skills extends Component {
                                       className={skill.name}
                                       name={skill.name}
                                       defaultChecked={skill.isSet}
+                                      disabled={interviewd}
                           />
                         </Form.Group>
                       </div>
@@ -235,9 +260,19 @@ class Skills extends Component {
 
             </Modal.Body>
             <Modal.Footer>
-              <Button variant="primary" type="submit">
-                Guardar
-              </Button>
+              {
+                  interviewd === true ?
+                  (
+                    <Button variant="secondary" type="button" disabled={interviewd}>
+                      Guardar
+                    </Button>
+                  ) :
+                  (
+                    <Button variant="primary" type="submit">
+                      Guardar
+                    </Button>
+                  )
+                }
             </Modal.Footer>
           </Form>
         </Modal>

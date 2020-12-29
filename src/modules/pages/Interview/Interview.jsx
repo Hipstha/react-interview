@@ -9,6 +9,7 @@ import { getInterviewesAction } from '../../../redux/actions/InterviewActions';
 // Component modules
 import Title from '../../components/Title/Title';
 import Loading from '../../components/Loading/Loading';
+import Error from '../../components/Error/Error';
 
 // classes
 import Props from '../../../Classes/Props';
@@ -64,7 +65,12 @@ class Interview extends Component {
   }
 
   render() {
-    const { loading, interviews } = this.state.interview;
+    const { error, loading, interviews } = this.state.interview;
+    if(error) {
+      return (
+        <Error />
+      )
+    }
     let comments = '';
     let candidate = [];
     let skills = [];
@@ -81,7 +87,7 @@ class Interview extends Component {
           loading === true ? (<Loading />): null
         }
 
-        <div className="summary">
+        <div className="summary animate__animated animate__fadeIn">
           <Title title="Resultados de entrevista" />
 
           <div className="summary-content">
