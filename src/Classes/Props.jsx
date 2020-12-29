@@ -1,5 +1,4 @@
 class Props {
-
   propsObj = [];
 
   setProps(propsObj) {
@@ -9,6 +8,7 @@ class Props {
   getProps() {
     return this.propsObj;
   }
+  
 }
 
 export default Props;

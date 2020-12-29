@@ -64,7 +64,6 @@ class CandidateData extends Component {
   }
 
   shouldComponentUpdate(nextProps) {
-    // console.log(nextProps);
     if (this.state.loading !== nextProps.candidate.loading) {
       this.setState({
         candidate: this.props.candidate.candidates[0],
@@ -100,7 +99,6 @@ class CandidateData extends Component {
 
   submittedForm(e) {
     e.preventDefault();
-    // console.log(this.state.candidate);
     const id = this.state.candidate.id;
     const name = this.state.candidate.name;
     const email = this.state.candidate.email;
@@ -133,7 +131,6 @@ class CandidateData extends Component {
   render() {
 
     const interviewd = this.state.candidate.interviewd;
-    console.log(interviewd)
     
     return (
       <>

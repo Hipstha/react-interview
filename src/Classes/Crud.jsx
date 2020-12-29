@@ -74,6 +74,7 @@ class Crud {
     }
   }
 
+  // Update an element without ask
   updateElementFast(endpoint, body, getState, getSuccess, getError) {
     return async (dispatch) => {
       dispatch( getState() );

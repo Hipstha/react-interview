@@ -1,3 +1,4 @@
+// This class can help you to create custom alerts
 import Swal from 'sweetalert2';
 
 class Alerts {

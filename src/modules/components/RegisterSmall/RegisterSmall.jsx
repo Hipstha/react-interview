@@ -40,7 +40,6 @@ class RegisterSmall extends Component {
   }
 
   handleShow() {
-    console.log('click')
     this.setState({
       show: true
     });

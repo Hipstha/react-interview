@@ -181,7 +181,6 @@ class Skills extends Component {
     const candidateSkills = this.state.candidate.skills;
     const skillsToEval = this.state.skillsToEval;
     const interviewd = this.state.candidate.interviewd;
-    // console.log(interview)
     return (
       <>
         {
