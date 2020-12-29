@@ -4,8 +4,7 @@ import { Modal } from 'react-bootstrap';
 
 // redux
 import { connect } from 'react-redux';
-import { getCandidatesAction } from '../../../redux/actions/candidateActions';
-import { addInterviewAction } from '../../../redux/actions/InterviewActions';
+import { getInterviewesAction } from '../../../redux/actions/InterviewActions';
 
 // Component modules
 import Title from '../../components/Title/Title';
@@ -16,9 +15,9 @@ import Props from '../../../Classes/Props';
 import Alerts from '../../../Classes/Alerts';
 
 // Styles
-import './Summary.scss';
+import './Interview.scss';
 
-class Summary extends Component {
+class Interview extends Component {
 
   thisProps = new Props();
   alerts = new Alerts();
@@ -27,37 +26,26 @@ class Summary extends Component {
     super(props);
     this.state = { 
       show: false, 
-      candidate: {
-        candidates: [
-          {
-            name: '',
-            email: '',
-            type: '',
-            skills: [],
-            interviewer: {
-
-            }
-          }
-        ],
+      interview: {
+        loading: false,
         error: false,
-        loading: false
+        interviews: []
       }
     };
     this.thisProps.setProps(props);
-    this.submittedForm = this.submittedForm.bind(this);
   }
 
   componentDidMount() {
-    this.props.getCandidatesAction();
+    this.props.getInterviewesAction();
     this.setState({
-      candidate: this.props.candidate
+      interview: this.props.interview
     });
   }
 
   shouldComponentUpdate(nextProps) {
-    if (this.state.candidate.loading !== nextProps.candidate.loading) {
+    if (this.state.interview.loading !== nextProps.interview.loading) {
       this.setState({
-        candidate: nextProps.candidate
+        interview: nextProps.interview
       });
     }
     return true;
@@ -75,34 +63,17 @@ class Summary extends Component {
     });
   }
 
-  submittedForm() {
-    const comment = document.getElementById('comment-sum').value;
-    const interview = {
-      candidate: this.state.candidate.candidates[0],
-      comments: comment
-    }
-    this.alerts.getConfirmAlert('¿Esta seguro que desea continuar?')
-      .then((result) => {
-        if(result.isConfirmed) {
-          this.props.addInterviewAction(interview);
-          setTimeout(() => {
-            this.props.history.push('/interview');
-          }, 100)
-        }
-      })
-  }
-
   render() {
-    const { loading, candidates } = this.state.candidate;
-    let candidate = {};
+    const { loading, interviews } = this.state.interview;
+    let comments = '';
+    let candidate = [];
     let skills = [];
-    if(candidates[0] !== undefined) {
-      candidate = candidates[0];
-      if(candidate.skills !== undefined) {
-        skills = candidate.skills;
-      }
+    if(interviews !== undefined && interviews.length !== 0) {
+      let thisInterview = interviews.length-1;
+      comments = interviews[thisInterview].comments;
+      candidate = interviews[thisInterview].candidate;
+      skills = interviews[thisInterview].candidate.skills;
     }
-    console.log(skills);
     return (
       <>
 
@@ -111,7 +82,7 @@ class Summary extends Component {
         }
 
         <div className="summary">
-          <Title title="Resumen" />
+          <Title title="Resultados de entrevista" />
 
           <div className="summary-content">
 
@@ -190,18 +161,12 @@ class Summary extends Component {
                 <h3>Comentarios: </h3>
               </div>
               <div className="comment">
-                <textarea name="comment" 
-                          id="comment-sum" 
-                          rows="5"
-                ></textarea>
+                <p>
+                  { comments }
+                </p>
               </div>
             </div>
 
-            <div className="summary-footer">
-              <div className="finish-button btn-primary" onClick={this.submittedForm}>
-                <p>Finalizar</p>
-              </div>
-            </div>
           </div>
         </div>
 
@@ -254,16 +219,14 @@ class Summary extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    candidate: state.candidate,
     interview: state.interview
   }
 }
 
 const mapDispatchToProps = () => {
   return {
-    getCandidatesAction,
-    addInterviewAction
+    getInterviewesAction
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps())(Summary);
+export default connect(mapStateToProps, mapDispatchToProps())(Interview);

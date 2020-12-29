@@ -1,5 +1,6 @@
 // libraries
 import React, { Component, Fragment} from 'react';
+
 import { Modal, Form, Button } from 'react-bootstrap';
 
 // redus
@@ -46,7 +47,6 @@ class Skills extends Component {
     };
     this.handleShow = this.handleShow.bind(this);
     this.handleClose = this.handleClose.bind(this);
-    this.handleChange = this.handleChange.bind(this);
     this.submittedForm = this.submittedForm.bind(this);
   }
 
@@ -82,23 +82,10 @@ class Skills extends Component {
       })
       return skill;
     });
-    // console.log(skillsToEval);
     this.setState({
       show: true,
       skillsToEval
     });
-  }
-
-  handleChange(e){
-    const target = e.target;
-    const name = target.name;
-    const value = target.value;
-    // this.setState({
-    //   skillsToEval: {
-    //     ...this.state.skillsToEval,
-    //     [name]: value
-    //   }
-    // })
   }
 
   submittedForm(e) {
@@ -108,6 +95,8 @@ class Skills extends Component {
       const element = document.getElementById(skill.name);
       if(element.checked === true) {
         return skill;
+      } else {
+        return undefined;
       }
     });
     const checkedsFilter = checkeds.filter(checked => {
@@ -159,19 +148,18 @@ class Skills extends Component {
         interviewer
       }
     });
-
+    
     this.handleClose();
 
   }
 
   render() {
-    const { loading, skills } = this.state.skills;
+    const { loading } = this.state.skills;
     const candidateSkills = this.state.candidate.skills;
     const skillsToEval = this.state.skillsToEval;
 
     return (
       <>
-
         {
           loading === true ? (<Loading />): null
         }
@@ -229,7 +217,7 @@ class Skills extends Component {
                 <div className="row">
                   {
                     skillsToEval.map((skill, idx) => (
-                      <div key={skill.id}  className="col-6">
+                      <div key={skill.id}  className="col-md-6 col-12">
                         <Form.Group>
                           <Form.Check type="checkbox" 
                                       id = {skill.name}

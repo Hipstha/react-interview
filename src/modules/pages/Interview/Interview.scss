@@ -21,7 +21,6 @@
                 margin: 0;
               }
             }
-            
           }
         }
 
@@ -91,7 +90,9 @@
         cursor: not-allowed;
       }
     }
+
   }
+
 }
 
 .modal-quest {
@@ -134,26 +135,3 @@
     }
   }
 }
-
-@media screen and (min-width: 0px) and (max-width: 630px) {  
-  .modal-quest {
-    .modal-dialog {
-      max-width: 100% !important;
-    }
-  }
-} 
-
-@media screen and (min-width: 0px) and (max-width: 420px) {  
-  .modal-quest {
-    .modal-dialog {
-      max-width: 100% !important;
-      .modal-content {
-        .modal-body {
-          .question-table {
-            display: none;
-          }
-        }
-      }
-    }
-  }
-} 

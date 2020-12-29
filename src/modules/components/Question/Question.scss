@@ -18,8 +18,10 @@
     .answers {
       .form-group {
         display: flex;
+        flex-wrap: wrap;
         justify-content: space-around;
         .form-check {
+          margin-bottom: 1rem;;
           input[type='radio']:before {
             content:'';
             display:block;

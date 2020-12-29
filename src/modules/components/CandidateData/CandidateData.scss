@@ -62,7 +62,11 @@
 .footer-interv {
   display: flex;
   justify-content: space-between;
-  .delete-interv {
+}
 
+@media screen and (min-width: 0px) and (max-width: 930px) {
+  .candidate-data {
+    width: 100%;
+    margin-bottom: 1rem;
   }
 }

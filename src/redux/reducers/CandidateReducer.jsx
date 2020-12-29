@@ -22,6 +22,9 @@ const initialState = {
 
 const CandidateReducer = (state = initialState, action) => {
   switch(action.type) {
+    case UPDATE_CANDIDATE:
+    case DELETE_CANDIDATE:
+    case CREATE_CANDIDATE: 
     case START_INITIAL_GET_CANDIDATE:
       return {
         ...state,
@@ -34,16 +37,14 @@ const CandidateReducer = (state = initialState, action) => {
         error: false,
         candidates: action.payload
       }
+    case UPDATE_CANDIDATE_ERROR:
+    case DELETE_CANDIDATE_ERROR:
+    case CREATE_CANDIDATE_ERROR:
     case INITIAL_GET_CANDIDATE_ERROR:
       return {
         ...state,
         loading: false,
         error: action.payload
-      }
-    case CREATE_CANDIDATE: 
-      return {
-        ...state,
-        loading: action.payload
       }
     case CREATE_CANDIDATE_SUCCESS:
       return {
@@ -52,34 +53,12 @@ const CandidateReducer = (state = initialState, action) => {
         error: false,
         candidates: [ ...state.candidates, action.payload]
       }
-    case CREATE_CANDIDATE_ERROR:
-      return {
-        ...state,
-        loading: false,
-        error: action.payload
-      }
-    case DELETE_CANDIDATE:
-      return {
-        ...state,
-        loading: action.payload
-      }
     case DELETE_CANDIDATE_SUCCESS:
       return {
         ...state,
         loading: false,
         error: false,
         candidates: state.candidates.filter( cand => cand.id !== action.payload)
-      }
-    case DELETE_CANDIDATE_ERROR:
-      return {
-        ...state,
-        loading: false,
-        error: action.payload
-      }
-    case UPDATE_CANDIDATE:
-      return {
-        ...state,
-        loading: action.payload
       }
     case UPDATE_CANDIDATE_SUCCESS:
       return {
@@ -91,12 +70,6 @@ const CandidateReducer = (state = initialState, action) => {
             return cand.id === action.payload.id ? cand = action.payload : cand
           }
         ) 
-      }
-    case UPDATE_CANDIDATE_ERROR:
-      return {
-        ...state,
-        loading: false,
-        error: action.payload
       }
     default: 
       return state;

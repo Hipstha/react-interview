@@ -14,6 +14,7 @@ import Interviewer from './modules/pages/Interviewer/Interviewer';
 import Candidate from './modules/pages/Candidate/Candidate';
 import Questions from './modules/pages/Questions/Questions';
 import Summary from './modules/pages/Summary/Summary';
+import Interview from './modules/pages/Interview/Interview';
 
 // styles
 import './App.scss';
@@ -36,6 +37,7 @@ class App extends Component {
                 <Route path="/candidates" component={ Candidate } />
                 <Route path="/questions" component={ Questions } />
                 <Route path="/summary" component={ Summary } />
+                <Route path="/interview" component={ Interview } />
               </Switch>
 
               {/* <Interviewer /> */}

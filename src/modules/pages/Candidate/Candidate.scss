@@ -1,9 +1,16 @@
 .candidate {
   .candidate-body {
     display: flex;
+    flex-wrap: wrap;
     margin-top: 2rem;
   }
-  .candidate-footer{
+}
 
+@media screen and (min-width: 0px) and (max-width: 930px) {
+  .candidate {
+    .candidate-body {
+      display: block;
+      
+    }
   }
 }

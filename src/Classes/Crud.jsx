@@ -36,7 +36,7 @@ class Crud {
     return (dispatch) => {
       try {
         this.alerts.getConfirmAlert(
-          'Esta seguro que desea eliminar este objeto?'
+          '¿Esta seguro que desea eliminar este objeto?'
         ).then((result) => {
           if(result.isConfirmed) {
             dispatch( getState() );
@@ -56,7 +56,7 @@ class Crud {
     return (dispatch) => {
       try {
         this.alerts.getConfirmAlert(
-          'Esta seguro que desea modificar este objeto?'
+          '¿Esta seguro que desea continuar?'
         ).then((result) => {
           if(result.isConfirmed) {
             dispatch( getState() );
@@ -65,7 +65,7 @@ class Crud {
               body
             );
             dispatch( getSuccess(body) );
-            this.alerts.getSuccessAlert('Se ha modifcado con éxito');
+            // this.alerts.getSuccessAlert('Se ha modifcado con éxito');
           }
         })
       } catch(error) {
@@ -81,7 +81,6 @@ class Crud {
       try {
         const resp = await axiosClient.put(`${endpoint}/${body.id}`, body);
         dispatch( getSuccess(resp.data) );
-        // this.alerts.getSuccessAlert('Se ha agregado correctamente');
       } catch(error) {
         console.log(error);
         dispatch( getError() );
